@@ -1,0 +1,136 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banka krvi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+<body  >
+
+<input type="checkbox" id="check">
+<!-- header area-->
+<header >
+    <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+        <h3>Banka <span>Krvi</span></h3>
+  <!--  </div>
+    <div id="potraznja"><i style="margin-left: 5px;" class="fas fa-exclamation-triangle fa-3x"></i>
+    </div>-->
+    <div class="right_area">
+        <a href="#" class="login_btn" id="login_btn" onclick="loginClick()">Prijavi se</a>
+    </div>
+    <div id="loginDiv">
+        <form onsubmit="donorCheck()">
+        <h3>Korisničko ime:</h3>
+        <input type="text" maxlength="24" id="txtUsername" placeholder="Unesite korisničko ime">
+        <br>
+        <h3>Lozinka:</h3>
+        <input type="password" maxlength="24" id="txtPassword" placeholder="Unesite lozinku">
+        <input id="loginBtn" type="submit" value="Prijavi se" style="width: 100px;margin-top: 30px; align-self: center">
+        </form>
+
+    </div>
+    </div>
+</header>
+<!--header end -->
+
+<!--sidebar start -->
+ <div class="sidebar">
+     <div class="profile_info">
+         <img src="Resources/blood_bank_icon.png" class="profile_img">
+         <h4 id="headingUser"></h4>
+     </div>
+
+     <a href="#" id="about" onclick="aboutInfo()"><i class="fas fa-info-circle"></i></i><span>O doniranju</span></a>
+     <a href="#" id="request" onclick="requestInfo()"><i class="fas fa-envelope-open-text"></i></i><span>Zahtjev</span></a>
+     <a href="#" id="profile" onclick="profileInfo()"><i class="fas fa-user"></i></i><span>Moj profil</span></a>
+     <a href="#" id="contact" onclick="contactInfo()"><i class="fas fa-envelope"></i></i><span>Kontakt</span></a>
+
+
+
+ </div>
+<!--sidebar end -->
+
+<div class="content" id="content" style="transition: 0.5s">
+    <div id="div_about">
+        <div id="topDiv">
+            <div class="bloodGroup" id="blood_A+" onclick="bloodInfo(this.id)" onmouseleave="bloodGroup(this.id)"> <img src="Resources/A+.png"></div>
+            <div class="bloodGroup"  id="blood_A-" onclick="bloodInfo(this.id)" onmouseleave="bloodGroup(this.id)"> <img src="Resources/A-.png"></div>
+            <div class="bloodGroup"  id="blood_B+" onclick="bloodInfo(this.id)" onmouseleave="bloodGroup(this.id)"> <img src="Resources/B+.png"></div>
+            <div class="bloodGroup"  id="blood_B-" onclick="bloodInfo(this.id)" onmouseleave="bloodGroup(this.id)"> <img src="Resources/B-.png"></div>
+        </div>
+        <div id="bottomDiv">
+            <div class="bloodGroup"  id="blood_O+" onclick="bloodInfo(this.id)" onmouseleave="bloodGroup(this.id)"> <img src="Resources/0+.png"></div>
+            <div class="bloodGroup"  id="blood_O-" onclick="bloodInfo(this.id)" onmouseleave="bloodGroup(this.id)"> <img src="Resources/0-.png"></div>
+            <div class="bloodGroup"  id="blood_AB+" onclick="bloodInfo(this.id)" onmouseleave="bloodGroup(this.id)"> <img src="Resources/AB+.png"></div>
+            <div class="bloodGroup"  id="blood_AB-" onclick="bloodInfo(this.id)" onmouseleave="bloodGroup(this.id)"> <img src="Resources/AB-.png"></div>
+        </div>
+        <div ><h3 style="color: #b5121b;margin-bottom: -10px">Zanimljive činjenice o doniranju krvi:</h3></div>
+        <div>
+            <ul>
+                <li class="bloodInfo">
+                   1. Jednoj od sedam osoba na bolničkom liječenju je potrebna krv.
+                </li>
+                <li class="bloodInfo">
+                    2. U prosjeku svaka odrasla osoba ima između 4 i 6 litara krvi u organizmu.
+                </li>
+                <li class="bloodInfo">
+                    3. Jedna jedinica krvi iznosi 450 ml.
+                </li >
+                <li class="bloodInfo">
+                    4. Novorođena beba ima 250 do 300 ml krvi u organizmu.
+                </li>
+                <li class="bloodInfo">
+                    5. A, B, O i AB su četri glavne krvne grupe kod čovjeka. AB krvna grupa je univerzalni primalac, a O krvna grupa je univerzalni davalac.
+                </li>
+                <li class="bloodInfo">
+                    6. Prosječno vrijeme doniranja krvi iznosi 15 minuta.
+                </li>
+                <li class="bloodInfo">
+                    7. Jedna jedinica krvi se može podijeliti na krvnu plazmu, eritrocite (crvena krvna zrnca), trombocite (krvne pločice) i leukocite (bijela krvna zrnca).
+                </li>
+                <li class="bloodInfo">
+                    8. Eritrociti prenose kiseonik od pluća do ostalih organa.
+                </li>
+                <li class="bloodInfo">
+                    9. U dvije ili tri kapi krvi se nalazi milijarda crvenih krvnih zrnaca.
+                </li>
+                <li class="bloodInfo">
+                    10. Trombociti pomažu zgrušavanju krvi.
+                </li>
+                <li class="bloodInfo">
+                    11. Krv i crvena krvna zrnca mogu da se upotrebe i do 42 dana nakon doniranja.
+                </li>
+                <li class="bloodInfo">
+                    12. Krvne pločice (trombociti) mogu da se upotrebe najkasnije 5 dana od dana doniranja.
+                </li>
+                <li class="bloodInfo">
+                    13. Pacijentima sa rakom i pacijentima sa operacijama na otvorenom srcu često je potrebna transfuzija trombocita da bi preživjeli.
+                </li>
+                <li class="bloodInfo">
+                    14. Svaka odrasla zdrava osoba može donirati krv svakih 56 dana ili 2 mjeseca, ali je preporuka za muškarce doniranje svaka 3 mjeseca, a za žene 4 mjeseca.
+                </li>
+                <li class="bloodInfo">
+                    15. Banke krvi najčešće potražuju doniranje O i B krvne grupe.
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<script src="script.js" defer></script>
+
+</body>
+</html>
